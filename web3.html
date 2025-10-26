@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Result Card - Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #eef6fb;
+      --card-shadow: 0 40px 80px rgba(35,50,100,0.08);
+      --left-grad-start: #7c5cff;
+      --left-grad-end: #6b3bff;
+      --muted: #8b92a8;
+      --white: #ffffff;
+      --panel-radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, 'Segoe UI', Roboto, Arial, sans-serif;
+      background:var(--bg);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:80px 20px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Card */
+    .card{
+      display:flex;
+      width:720px;
+      border-radius:var(--panel-radius);
+      background:var(--white);
+      box-shadow: var(--card-shadow);
+      overflow:visible;
+    }
+
+    /* left panel is a separate element so we can keep right panel white */
+    .left{
+      width:320px;
+      padding:36px 28px;
+      background: linear-gradient(180deg,var(--left-grad-start), var(--left-grad-end));
+      color:#fff;
+      border-top-left-radius:var(--panel-radius);
+      border-bottom-left-radius:var(--panel-radius);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+    }
+
+    .left .label{font-size:13px;opacity:.95;margin-top:6px}
+
+    .score-circle{
+      width:164px;height:164px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      background: radial-gradient(closest-side, rgba(10,10,30,0.18) 30%, rgba(10,10,30,0.06) 65%, transparent 100%), linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      box-shadow: inset 0 10px 30px rgba(255,255,255,0.03), 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .score-num{font-size:56px;font-weight:800;line-height:1;margin:0}
+    .score-sub{font-size:12px;opacity:.95;margin-top:6px}
+
+    .rating{font-size:20px;font-weight:700;margin-top:8px}
+    .explain{font-size:13px;color:rgba(255,255,255,0.9);line-height:1.5;text-align:center;margin:6px 6px 0}
+
+    /* right panel */
+    .right{
+      flex:1;
+      padding:28px 28px 32px 34px;
+      background:var(--white);
+      border-top-right-radius:var(--panel-radius);
+      border-bottom-right-radius:var(--panel-radius);
+      display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .right .head{display:flex;align-items:center;justify-content:space-between}
+    .right h2{margin:0;font-size:18px;color:#111827}
+
+    .summary-list{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+
+    .row{
+      display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;background:#fbfdff;border:1px solid rgba(15,23,42,0.03);
+    }
+    .left-part{display:flex;align-items:center;gap:14px}
+
+    .icon{
+      width:44px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:700
+    }
+    .label-text{font-size:14px;color:#111827;font-weight:700}
+    .score-text{font-size:14px;color:var(--muted)}
+
+    /* colored backgrounds similar to the image */
+    .icon.reaction{background: linear-gradient(180deg,#ffb4b4,#ff8b8b)}
+    .icon.memory{background: linear-gradient(180deg,#ffe7b8,#ffd36a); color:#3b2f1a}
+    .icon.verbal{background: linear-gradient(180deg,#baf3df,#4ce0a0); color:#04492f}
+    .icon.visual{background: linear-gradient(180deg,#e9e8ff,#cdb8ff)}
+
+    .continue-wrap{display:flex;justify-content:center;margin-top:6px}
+    .btn{
+      background:#23283b;color:#fff;padding:12px 48px;border-radius:28px;border:none;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(35,40,60,0.12)
+    }
+
+    /* subtle center drop shadow under card to match image */
+    .card::after{
+      content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:16px;width:520px;height:110px;border-radius:80px;filter:blur(30px);background:rgba(45,66,90,0.06);z-index:-1;
+    }
+
+    @media (max-width:740px){
+      .card{width:92vw;flex-direction:column}
+      .left{width:100%;border-bottom-left-radius:0;border-top-right-radius:var(--panel-radius)}
+      .right{padding:20px}
+      .card::after{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" role="region" aria-label="Result card">
+    <div class="left">
+      <div class="label">Your Result</div>
+      <div class="score-circle" aria-hidden>
+        <div class="score-num">76</div>
+        <div class="score-sub">of 100</div>
+      </div>
+      <div class="rating">Great</div>
+      <div class="explain">You scored higher than 65% of the people who have taken these tests.</div>
+    </div>
+
+    <div class="right">
+      <div>
+        <div class="head">
+          <h2>Summary</h2>
+        </div>
+
+        <div class="summary-list">
+          <div class="row">
+            <div class="left-part">
+              <div class="icon reaction" aria-hidden>
+                <!-- small lightning svg -->
+                <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8h6l-1 5 9-9h-6l1-4L1 8z" fill="#fff"/></svg>
+              </div>
+              <div class="label-text">Reaction</div>
+            </div>
+            <div class="score-text"><strong>80</strong> / 100</div>
+          </div>
+
+          <div class="row">
+            <div class="left-part">
+              <div class="icon memory" aria-hidden>
+                <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="16" height="12" rx="2" fill="#fff"/></svg>
+              </div>
+              <div class="label-text">Memory</div>
+            </div>
+            <div class="score-text"><strong>92</strong> / 100</div>
+          </div>
+
+          <div class="row">
+            <div class="left-part">
+              <div class="icon verbal" aria-hidden>
+                <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h14v6H6l-4 4V2z" fill="#fff"/></svg>
+              </div>
+              <div class="label-text">Verbal</div>
+            </div>
+            <div class="score-text"><strong>61</strong> / 100</div>
+          </div>
+
+          <div class="row">
+            <div class="left-part">
+              <div class="icon visual" aria-hidden>
+                <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 2c4 0 7 4 7 4s-3 4-7 4-7-4-7-4 3-4 7-4z" fill="#fff"/></svg>
+              </div>
+              <div class="label-text">Visual</div>
+            </div>
+            <div class="score-text"><strong>73</strong> / 100</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="continue-wrap">
+        <button class="btn" type="button">Continue</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

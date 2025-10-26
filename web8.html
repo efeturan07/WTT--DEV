@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Huddle Hero - Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --purple-1:#5a3b9f; /* base */
+      --purple-2:#9b4fd1; /* stripe */
+      --accent:#d46fcf; /* small diamonds */
+      --white:#ffffff;
+      --dark:#062d2f;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter, 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      background:var(--purple-1);color:var(--white);-webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center;
+    }
+
+    /* diagonal stripes and decorative diamonds */
+    .hero{
+      width:100%;min-height:680px;padding:4.5rem 6rem;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg,var(--purple-1),#6739a8);
+    }
+    /* main diagonal stripes to mimic screenshot */
+    .hero::before{content:'';position:absolute;left:-10%;top:-35%;width:160%;height:48%;background:linear-gradient(90deg,var(--purple-2),rgba(255,255,255,0));transform:rotate(-25deg);opacity:0.28}
+    .hero::after{content:'';position:absolute;left:-35%;bottom:-30%;width:160%;height:48%;background:linear-gradient(90deg,rgba(255,255,255,0),var(--purple-2));transform:rotate(-25deg);opacity:0.28}
+
+    /* decorative diamonds */
+  .diamond{position:absolute;width:44px;height:44px;background:linear-gradient(135deg,var(--accent),#b56fd7);transform:rotate(45deg);opacity:0.32;border-radius:6px}
+  .diamond.s1{left:74%;top:8%}
+  .diamond.s2{left:86%;top:36%;width:30px;height:30px}
+  .diamond.s3{left:14%;bottom:10%;opacity:0.18}
+
+  .container{width:100%;max-width:1160px;display:flex;align-items:center;gap:3.5rem}
+
+    /* left illustration (simplified) */
+    .art{flex:1;max-width:58%;position:relative;display:flex;align-items:center;justify-content:flex-start;padding-left:1rem}
+    .window{width:78%;height:320px;background:var(--white);border-radius:12px;box-shadow:0 28px 60px rgba(6,18,24,0.45);position:relative;padding:32px 32px;color:#d6dbe0}
+    .window .topbar{height:34px;background:#082f31;border-radius:8px;margin:-28px -28px 18px -28px;padding:6px 12px;display:flex;align-items:center;justify-content:space-between}
+    .window .topbar .left{background:rgba(255,255,255,0.12);height:10px;width:120px;border-radius:6px}
+    .window .row{display:flex;align-items:center;gap:18px;padding:14px 0}
+    .dot{width:44px;height:44px;border-radius:50%;background:linear-gradient(180deg,#ff9a9a,#ff6fbf)}
+    .dot.blue{background:linear-gradient(180deg,#2fb0ff,#1579ff)}
+    .dot.purple{background:linear-gradient(180deg,#d26bff,#8e3bd1)}
+    .lines{flex:1}
+    .lines span{display:block;height:8px;border-radius:4px;background:linear-gradient(90deg,#e7edf2,#f4f6f8);margin-bottom:8px}
+
+    /* smaller mobile mock */
+  .mobile{position:absolute;right:8%;bottom:6%;width:190px;height:360px;background:var(--white);border-radius:10px;box-shadow:0 34px 60px rgba(6,18,24,0.45);padding:14px}
+    .mobile .top{height:28px;background:#0b3a3b;border-radius:6px;margin:-14px -14px 12px -14px}
+    .mobile .list{margin-top:8px}
+    .mobile .list .item{display:flex;align-items:center;gap:8px;padding:6px 0}
+    .mobile .list .item .dot{width:18px;height:18px}
+
+    /* right copy */
+  .copy{flex:0 0 40%;color:var(--white);padding-right:2rem}
+  .copy h1{font-family:Montserrat, sans-serif;font-size:3.2rem;line-height:1.02;margin:0 0 1rem;font-weight:700}
+  .copy p{color:rgba(255,255,255,0.95);line-height:1.6;margin:0 0 2.25rem;font-size:1rem}
+  .btn{display:inline-block;background:var(--white);color:var(--purple-1);padding:14px 46px;border-radius:999px;font-weight:700;box-shadow:0 18px 32px rgba(4,12,20,0.36);text-decoration:none}
+
+    /* logo top-left */
+  .logo{position:absolute;left:4rem;top:2.25rem;color:var(--white);font-weight:700;font-family:Montserrat, sans-serif;display:flex;align-items:center;gap:12px}
+  .logo .bubble{width:40px;height:30px;border-radius:8px;border:2px solid rgba(255,255,255,0.35);display:flex;align-items:center;justify-content:center}
+
+    /* social icons bottom-right */
+  .social{position:absolute;right:4rem;bottom:3.5rem;display:flex;gap:12px}
+  .social a{width:46px;height:46px;border-radius:50%;border:2px solid rgba(255,255,255,0.28);display:flex;align-items:center;justify-content:center;color:var(--white);text-decoration:none}
+
+    @media (max-width:900px){
+      .container{flex-direction:column;gap:1.5rem}
+      .copy{flex:unset;width:100%;text-align:center}
+      .art{max-width:100%;justify-content:center}
+      .mobile{position:static;width:220px;height:360px;margin-top:-60px}
+      .logo{left:1rem;top:1rem}
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero" aria-label="Huddle hero">
+    <div class="diamond s1"></div>
+    <div class="diamond s2"></div>
+    <div class="diamond s3"></div>
+
+    <div class="container">
+      <div class="art" aria-hidden>
+        <div class="window">
+          <div class="topbar"><div class="left"></div><div style="width:36px;height:6px;border-radius:3px;background:rgba(255,255,255,0.12)"></div></div>
+          <div class="row"><div class="dot"></div><div class="lines"><span style="width:70%"></span><span style="width:50%"></span><span style="width:85%"></span></div></div>
+          <div class="row"><div class="dot blue"></div><div class="lines"><span style="width:60%"></span><span style="width:45%"></span><span style="width:75%"></span></div></div>
+          <div class="row"><div class="dot purple"></div><div class="lines"><span style="width:55%"></span><span style="width:40%"></span><span style="width:70%"></span></div></div>
+        </div>
+
+        <div class="mobile" aria-hidden>
+          <div class="top"></div>
+          <div class="list">
+            <div class="item"><div class="dot" style="width:14px;height:14px;border-radius:50%"></div><div style="height:8px;width:120px;background:#e7edf2;border-radius:4px"></div></div>
+            <div class="item"><div class="dot blue" style="width:14px;height:14px;border-radius:50%"></div><div style="height:8px;width:110px;background:#e7edf2;border-radius:4px"></div></div>
+            <div class="item"><div class="dot purple" style="width:14px;height:14px;border-radius:50%"></div><div style="height:8px;width:100px;background:#e7edf2;border-radius:4px"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copy">
+        <h1>Build The Community<br/>Your Fans Will Love</h1>
+        <p>Huddle re-imagines the way we build communities. You have a voice, but so does your audience. Create connections with your users as you engage in genuine discussion.</p>
+        <a class="btn" href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="logo"><span class="bubble">💬</span><span style="font-size:1.4rem">Huddle</span></div>
+
+    <div class="social" aria-hidden>
+      <a href="#">f</a>
+      <a href="#">t</a>
+      <a href="#">ig</a>
+    </div>
+  </section>
+
+</body>
+</html>

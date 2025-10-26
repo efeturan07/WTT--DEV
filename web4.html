@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Car Types - Cards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f4f5f4;
+      --card-radius:12px;
+      --gap:24px;
+      --orange: #df8a21;
+      --teal: #0f7876;
+      --dark: #063d39;
+      --white: #ffffff;
+      --muted: rgba(0,0,0,0.45);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, Arial, sans-serif;
+      background:var(--bg);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:56px 20px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Container */
+    .wrap{width:100%;max-width:1080px}
+
+    .card{
+      display:flex;
+      border-radius:var(--card-radius);
+      overflow:hidden;
+      box-shadow:0 30px 60px rgba(0,0,0,0.06);
+      background:var(--white);
+      position:relative;
+    }
+
+    /* panels */
+  .panel{flex:1;padding:48px 56px 56px;color:var(--white);position:relative;min-height:360px}
+
+    /* small icon circle */
+  .icon-wrap{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.08);position:absolute;left:40px;top:28px}
+    .icon svg{width:20px;height:14px;display:block;opacity:0.95}
+
+    /* headings */
+  h3{font-family:Oswald,Inter,Arial,sans-serif;font-weight:700;margin:92px 0 18px;font-size:36px;letter-spacing:3px;text-transform:uppercase}
+  p{margin:0 0 28px;color:rgba(255,255,255,0.92);line-height:1.7;max-width:340px}
+
+  .btn{display:inline-block;padding:12px 30px;background:var(--white);color:inherit;border-radius:28px;font-weight:600;text-decoration:none;box-shadow:0 6px 0 rgba(0,0,0,0.02);}
+
+    /* colors for each panel */
+  .panel.sedans{background:var(--orange); color:#fff}
+  .panel.suvs{background:linear-gradient(180deg, #0e7c79, #0b6a69); color:#fff}
+  .panel.luxury{background:linear-gradient(180deg, #074b47, #053735); color:#fff}
+
+    /* separators: thin dark strip between panels like the image */
+  /* use thin divider lines between panels to match the image */
+  .panel + .panel::before{content:"";position:absolute;left:0;top:0;width:6px;height:100%;transform:translateX(-100%);background:linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.04));}
+
+    /* adjust inner text color for dark backgrounds */
+  .panel h3{color:#fff}
+    .panel p{color:rgba(255,255,255,0.9)}
+
+    /* Make button text color darker on light white background */
+  /* button text color: use panel base color for the label by inverting via currentColor on wrapper */
+  .panel.sedans .btn{color:var(--orange);}
+  .panel.suvs .btn{color:#0e7c79}
+  .panel.luxury .btn{color:#063d39}
+
+  /* ensure button background remains white */
+  .panel .btn{background:var(--white)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .card{flex-direction:column}
+      .icon-wrap{left:28px}
+      h3{margin-top:64px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Car categories">
+      <section class="panel sedans" aria-label="Sedans">
+        <div class="icon-wrap" aria-hidden>
+          <!-- car icon -->
+          <svg viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 10h2l1.5-3h11L21 10v3h-1.5a1.5 1.5 0 0 0-3 0H8.5a1.5 1.5 0 0 0-3 0H4v-3z" fill="rgba(0,0,0,0.18)"/></svg>
+        </div>
+        <h3>SEDANS</h3>
+        <p>Choose a sedan for its affordability and excellent fuel economy. Ideal for cruising in the city or on your next road trip.</p>
+        <a class="btn" href="#">Learn More</a>
+      </section>
+
+      <section class="panel suvs" aria-label="SUVs">
+        <div class="icon-wrap" aria-hidden>
+          <svg viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 9h3l1-3h8l1.5 3H22v4h-1.5a1.5 1.5 0 0 0-3 0H7.5a1.5 1.5 0 0 0-3 0H3v-4z" fill="rgba(0,0,0,0.12)"/></svg>
+        </div>
+        <h3>SUVS</h3>
+        <p>Take an SUV for its spacious interior, power, and versatility. Perfect for your next family vacation and off-road adventures.</p>
+        <a class="btn" href="#">Learn More</a>
+      </section>
+
+      <section class="panel luxury" aria-label="Luxury">
+        <div class="icon-wrap" aria-hidden>
+          <svg viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 9h3l1-3h8l1.5 3H23v4h-1.5a1.5 1.5 0 0 0-3 0H8.5a1.5 1.5 0 0 0-3 0H4v-4z" fill="rgba(0,0,0,0.10)"/></svg>
+        </div>
+        <h3>LUXURY</h3>
+        <p>Cruise in the best car brands without the bloated prices. Enjoy the enhanced comfort of a luxury rental and arrive in style.</p>
+        <a class="btn" href="#">Learn More</a>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>

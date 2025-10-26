@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workit Features - Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f6f8;
+      --purple:#2b0f3b; /* left promo dark */
+      --panel-purple:#2b1340; /* right purple panel */
+      --deep:#1f0a2a;
+      --mint:#1ee39a;
+      --card-w:280px;
+      --card-h:760px;
+      --shadow:0 22px 46px rgba(16,24,40,0.10);
+      --muted:#8b93a0;
+      --workit:#2b1340;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);font-family:Inter, Montserrat, system-ui;display:flex;align-items:center;justify-content:center;padding:4rem}
+
+  .wrap{max-width:1100px;width:100%;display:flex;gap:2.5rem;align-items:start;justify-content:center}
+
+    /* card base */
+    .card{width:var(--card-w);height:var(--card-h);background:#fff;border-radius:10px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+
+    /* left promo - dark purple with phone mock */
+  .promo{background:linear-gradient(180deg,var(--purple),#2e184f);color:var(--white);padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+  .promo .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .promo .brand{font-weight:700;font-family:Montserrat;margin:0}
+  .promo .badge{background:rgba(255,255,255,0.08);padding:6px 10px;border-radius:6px;font-size:0.85rem}
+  .promo h3{font-family:Montserrat;font-size:1.45rem;margin:6px 0 12px}
+  .promo .cta{background:var(--mint);color:#072523;padding:10px 14px;border-radius:6px;display:inline-block;font-weight:700;text-decoration:none}
+  .phone{width:120%;height:200px;background:linear-gradient(180deg,#fff,#f7f7fb);border-radius:12px;margin-left:-20px;box-shadow:0 28px 48px rgba(3,10,18,0.16);transform:rotate(-14deg);display:flex;align-items:center;justify-content:center}
+
+    /* center features list */
+  .features{display:flex;flex-direction:column;padding:24px;gap:8px}
+  .step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:22px 12px;border-radius:8px}
+  .step .num{width:56px;height:56px;border-radius:50%;border:2px solid #eee;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--deep);margin-bottom:14px;background:#fff}
+  .step h4{font-family:Montserrat;margin:0 0 10px;color:var(--deep);font-weight:700}
+  .step p{margin:0;color:var(--muted);font-size:0.95rem;line-height:1.6}
+
+    /* right profile CTA */
+  .profile{display:flex;flex-direction:column;align-items:center;padding:18px}
+  .avatar{width:120px;height:120px;border-radius:50%;background:none;margin-top:6px;box-shadow:0 10px 28px rgba(10,20,30,0.14);border:6px solid #fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .card.dark{background:#fff}
+  .profile .panel{background:var(--panel-purple);color:#fff;width:100%;margin-top:18px;padding:22px;border-radius:6px;text-align:left}
+  .profile .name{font-weight:700;margin-top:12px;text-align:center}
+  .apply{display:inline-block;margin-top:14px;background:var(--mint);color:#072523;padding:10px 12px;border-radius:6px;text-decoration:none;font-weight:700}
+  .profile .panel p{margin:0 0 12px;color:rgba(255,255,255,0.95)}
+
+    /* footer brand */
+  .brand{margin-top:auto;padding:18px;text-align:center;color:var(--deep);font-weight:700}
+
+    @media (max-width:1000px){
+      .wrap{flex-direction:column;align-items:center}
+      .card{height:auto;width:84%;max-width:420px}
+      .phone{transform:none;width:70%;margin:0 auto}
+      .features{padding:20px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <!-- left promo -->
+    <aside class="card promo">
+      <div>
+        <div style="height:22px;width:140px;background:rgba(255,255,255,0.08);border-radius:6px;margin-bottom:18px"></div>
+        <h3>Data tailored to<br/>your needs.</h3>
+        <p style="color:rgba(255,255,255,0.85);line-height:1.5">Optimize your products, improve customer satisfaction and stay ahead of the competition with our product data analytics.</p>
+      </div>
+      <div style="display:flex;gap:18px;align-items:center;justify-content:space-between">
+        <a class="cta" href="#">Learn More</a>
+        <div class="phone" aria-hidden>
+          <!-- Inline SVG phone mock -->
+          <svg class="phone-svg" viewBox="0 0 120 200" width="120" height="200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="screenGrad" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#f3f6fb"/>
+              </linearGradient>
+              <linearGradient id="dotGrad" x1="0" x2="1">
+                <stop offset="0%" stop-color="#ff9a9a"/>
+                <stop offset="100%" stop-color="#ff6fbf"/>
+              </linearGradient>
+            </defs>
+            <!-- outer device -->
+            <rect x="2" y="6" rx="8" ry="8" width="116" height="188" fill="#ffffff" stroke="#e6eef6" stroke-width="2"/>
+            <!-- top bar -->
+            <rect x="8" y="12" rx="4" ry="4" width="40" height="8" fill="#eef3f7"/>
+            <!-- left dots -->
+            <circle cx="14" cy="40" r="8" fill="url(#dotGrad)"/>
+            <circle cx="14" cy="72" r="8" fill="#2fb0ff"/>
+            <circle cx="14" cy="104" r="8" fill="#d26bff"/>
+            <!-- horizontal lines -->
+            <g fill="none" stroke="#e6eef6" stroke-linecap="round" stroke-width="4">
+              <path d="M34 36 H96"/>
+              <path d="M34 52 H92"/>
+              <path d="M34 68 H96"/>
+              <path d="M34 84 H92"/>
+              <path d="M34 100 H96"/>
+            </g>
+            <!-- right bullets -->
+            <g fill="#dbe4ea">
+              <circle cx="102" cy="44" r="4"/>
+              <circle cx="102" cy="60" r="4"/>
+              <circle cx="102" cy="76" r="4"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </aside>
+
+    <!-- center features list -->
+    <main class="card features">
+      <section class="step">
+        <div class="num">1</div>
+        <h4>Actionable insights</h4>
+        <p>Optimize your products, improve customer satisfaction and stay ahead of the competition with our product data analytics.</p>
+      </section>
+      <section class="step">
+        <div class="num">2</div>
+        <h4>Data-driven decisions</h4>
+        <p>Make data-driven decisions with our product data analytics. Our AI-generated reports help you unlock insights hidden in your product data.</p>
+      </section>
+      <section class="step">
+        <div class="num">3</div>
+        <h4>Always affordable</h4>
+        <p>Always affordable pricing that scales with your business. Get top-quality product data analytics services without hidden costs or unexpected fees.</p>
+      </section>
+    </main>
+
+    <!-- right profile CTA -->
+    <aside class="card profile">
+      <div style="height:18px;width:60px;background:rgba(0,0,0,0.06);border-radius:6px;margin-bottom:14px;align-self:flex-end"></div>
+      <div class="avatar" aria-hidden></div>
+      <div class="name">Be the first to test</div>
+      <div class="panel">
+        <p style="margin:0;font-size:0.95rem">Hi, I'm Louis Graham, the founder of the company. Book a demo call with me to become a beta tester for our app and kickstart your company.</p>
+        <a class="apply" href="#">Apply for access</a>
+      </div>
+      <div class="brand">workit</div>
+    </aside>
+  </div>
+
+</body>
+</html>

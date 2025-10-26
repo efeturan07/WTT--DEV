@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join our community - Subscription Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #eaf5f8; /* pale blue background */
+      --card-radius:10px;
+      --teal: #2bb1aa;
+      --teal-dark: #19958f;
+      --teal-deep: #0e8b86;
+      --white: #ffffff;
+      --accent: #c9e93f; /* lime-ish for sign up */
+      --muted: #6b7b84;
+      --shadow: 0 20px 40px rgba(21,60,76,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, Arial, sans-serif;
+      background:var(--bg);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:80px 20px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap{width:100%;max-width:860px}
+
+    .card{
+      border-radius:var(--card-radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:var(--white);
+      display:block;
+      position:relative;
+    }
+
+    /* top white area */
+    .top{
+      padding:28px 36px 22px;
+      background:var(--white);
+    }
+    .title{color:var(--teal-deep);font-weight:700;font-size:18px;margin:0 0 8px}
+    .guarantee{color:#9ecf3a;font-weight:700;margin:0 0 8px}
+    .desc{color:var(--muted);font-size:13px;line-height:1.6;margin:0}
+
+    /* lower split area */
+    .bottom{
+      display:flex;
+      background:linear-gradient(180deg,var(--teal) 0%, var(--teal-dark) 100%);
+    }
+    .col{flex:1;padding:28px 34px;color:var(--white)}
+    .col.right{background:linear-gradient(180deg,#3ab6b0,#2aa39e)}
+
+    /* left pricing column */
+    .price-label{font-size:13px;color:rgba(255,255,255,0.95);margin-bottom:8px;font-weight:600}
+    .price{font-size:28px;font-weight:700;margin:0}
+    .per{font-size:12px;color:rgba(255,255,255,0.9);display:inline-block;margin-left:8px;font-weight:400}
+    .small{font-size:12px;color:rgba(255,255,255,0.9);margin-top:8px}
+
+    .signup-wrap{margin-top:18px}
+    .btn{
+      display:inline-block;padding:12px 28px;background:var(--accent);color:#163b38;border-radius:8px;font-weight:700;text-decoration:none;box-shadow:0 8px 18px rgba(19,39,36,0.12);
+    }
+
+    /* right reasons column */
+    .why-title{font-weight:700;margin:0 0 12px}
+    .why-list{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.95);margin:0;padding-left:0}
+    .why-list li{list-style:none;margin:6px 0;padding-left:0}
+
+    /* divider between left and right lower columns */
+    .bottom::before{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;pointer-events:none}
+    .col + .col{border-left:1px solid rgba(0,0,0,0.08)}
+
+    /* center the card width and add rounded corners like image */
+    .card{width:700px;border-radius:8px}
+
+    @media (max-width:720px){
+      .card{width:92%;}
+      .bottom{flex-direction:column}
+      .col + .col{border-left:none;border-top:1px solid rgba(0,0,0,0.04)}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Subscription card">
+      <div class="top">
+        <div class="title">Join our community</div>
+        <div class="guarantee">30-day, hassle-free money back guarantee</div>
+        <p class="desc">Gain access to our full library of tutorials along with expert code reviews. Perfect for any developers who are serious about honing their skills.</p>
+      </div>
+
+      <div class="bottom">
+        <div class="col left">
+          <div class="price-label">Monthly Subscription</div>
+          <h2 class="price">$29 <span class="per">per month</span></h2>
+          <div class="small">Full access for less than $1 a day</div>
+
+          <div class="signup-wrap">
+            <a class="btn" href="#">Sign Up</a>
+          </div>
+        </div>
+
+        <div class="col right">
+          <h3 class="why-title">Why Us</h3>
+          <ul class="why-list">
+            <li>Tutorials by industry experts</li>
+            <li>Peer & expert code review</li>
+            <li>Coding exercises</li>
+            <li>Access to our GitHub repos</li>
+            <li>Community forum</li>
+            <li>Flashcard decks</li>
+            <li>New videos every week</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
