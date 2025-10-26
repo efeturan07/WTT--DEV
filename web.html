@@ -1,0 +1,189 @@
+<!-- ...existing code... -->
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Card - HTML & CSS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+  :root{
+    --bg:#f3c642;
+    --card-bg:#fff;
+    --black-shadow:#0b0b0b;
+    --text:#222;
+    --muted:#737373;
+    --accent:#f0c650;
+    --card-w:360px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  .page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:64px 20px;
+  }
+
+  /* Kart ve offset gölge (sağa-aşağı) */
+  .card{
+    width:var(--card-w);
+    background:var(--card-bg);
+    border-radius:18px;
+    overflow:visible;
+    position:relative;
+    padding:18px;
+    box-shadow:0 2px 0 rgba(0,0,0,0.03);
+  }
+
+  /* offset siyah 'katman' */
+  .card::after{
+    content:"";
+    position:absolute;
+    right:-14px;
+    bottom:-14px;
+    width:100%;
+    height:100%;
+    background:var(--black-shadow);
+    border-radius:22px;
+    z-index:-2;
+    filter:blur(0.6px);
+  }
+
+  /* ince beyaz iç kenarlık efekti */
+  .card::before{
+    content:"";
+    position:absolute;
+    left:8px;
+    top:8px;
+    right:22px;
+    bottom:22px;
+    border-radius:14px;
+    background:transparent;
+    z-index:-1;
+  }
+
+  /* Medya görseli */
+  .card-media{
+    width:100%;
+    height:140px;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 2px 0 rgba(0,0,0,0.04) inset;
+    margin-bottom:14px;
+    border:6px solid #fff; /* beyaz çerçeve efekti */
+    border-radius:14px;
+  }
+  .card-media svg{width:100%;height:100%;display:block}
+
+  /* İçerik */
+  .card-body{padding:6px 2px 6px 2px}
+  .badge{
+    display:inline-block;
+    background:var(--accent);
+    color:#222;
+    padding:6px 10px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:13px;
+    margin-bottom:12px;
+  }
+  .meta{
+    color:var(--muted);
+    font-size:13px;
+    margin:6px 0 10px;
+  }
+  .title{
+    margin:0 0 12px;
+    font-size:20px;
+    line-height:1.1;
+    font-weight:700;
+  }
+  .desc{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.5;
+    margin:0 0 18px;
+  }
+
+  /* Author */
+  .author{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:6px;
+    padding-bottom:6px;
+  }
+  .avatar{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#31708f,#74b3c5);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:13px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.1);
+    border:3px solid #fff;
+    transform:translateY(0);
+  }
+  .author-name{font-weight:600;font-size:13px}
+
+  /* Responsive küçültme */
+  @media (max-width:420px){
+    :root{--card-w:320px}
+    .card-media{height:120px}
+  }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <article class="card">
+      <div class="card-media" aria-hidden="true">
+        <!-- basit SVG ile görsel benzeri arka plan -->
+        <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="100%" height="100%" fill="#f3c642" rx="18" />
+          <g transform="translate(40,20)">
+            <circle cx="210" cy="80" r="60" fill="#fff"/>
+            <circle cx="260" cy="80" r="60" fill="#000"/>
+            <path d="M0 260 q80 -120 220 -100 t240 40" fill="#000" opacity="0.95"/>
+            <rect x="420" y="40" width="120" height="220" rx="24" fill="#f3c642" stroke="#111" stroke-width="6"/>
+            <g fill="#000" opacity="0.9">
+              <rect x="460" y="240" width="10" height="40" rx="4"/>
+              <rect x="484" y="220" width="10" height="60" rx="4"/>
+              <rect x="508" y="200" width="10" height="80" rx="4"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="card-body">
+        <span class="badge">Learning</span>
+        <div class="meta">Published 21 Dec 2023</div>
+        <h1 class="title">HTML &amp; CSS foundations</h1>
+        <p class="desc">These languages are the backbone of every website, defining structure, content, and presentation.</p>
+
+        <div class="author">
+          <div class="avatar" aria-hidden="true">GH</div>
+          <div class="author-info">
+            <div class="author-name">Greg Hooper</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
+<!-- ...existing code... -->

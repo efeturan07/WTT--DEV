@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR Card - Demo</title>
+  <style>
+    /* Basic reset */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: #e6f0f6; /* pale blue background like the image */
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px 20px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Card */
+    .card{
+      width:340px;
+      background:#fff;
+      border-radius:16px;
+      box-shadow: 0 30px 40px rgba(45,66,90,0.08);
+      overflow:hidden;
+    }
+
+    /* Top blue QR area */
+    .qr-area{
+      padding:22px;
+      background: linear-gradient(180deg,#2f8bff 0%, #2b79e9 100%);
+      position:relative;
+      border-top-left-radius:16px;
+      border-top-right-radius:16px;
+    }
+
+    /* soft decorative blobs on top area */
+    .qr-area::before,
+    .qr-area::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      filter: blur(18px);
+      opacity:.12;
+    }
+    .qr-area::before{
+      width:120px;height:120px;right:12px;top:10px;background:#ffffff;
+    }
+    .qr-area::after{
+      width:80px;height:80px;left:18px;bottom:8px;background:#ffffff;
+    }
+
+    /* QR container with white rounded border look */
+    .qr-shell{
+      width:210px;
+      height:210px;
+      margin:0 auto;
+      background:#2f8bff;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: inset 0 10px 18px rgba(255,255,255,0.06);
+      position:relative;
+    }
+
+    /* inner white area holding the pseudo-QR */
+    .qr-inner{
+      width:168px;
+      height:168px;
+      background:#fff;
+      border-radius:8px;
+      padding:10px;
+      display:grid;
+      place-items:center;
+    }
+
+    /* A simple stylized QR using an inline SVG - looks QR-ish without external asset */
+    .qr-svg{width:140px;height:140px;display:block}
+
+    /* Card text area */
+    .card-body{
+      padding:22px 28px 30px;
+      text-align:center;
+    }
+
+    .title{
+      font-size:18px;
+      line-height:1.15;
+      margin:0 0 10px;
+      color:#0b2340;
+      font-weight:800;
+    }
+
+    .desc{
+      margin:0;
+      font-size:13px;
+      color:#6b7280;
+      line-height:1.5;
+    }
+
+    /* small responsive tweak */
+    @media (max-width:380px){
+      .card{width:92vw}
+      .qr-shell{width:190px;height:190px}
+      .qr-inner{width:150px;height:150px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" role="region" aria-label="QR card">
+    <div class="qr-area">
+      <div class="qr-shell">
+        <div class="qr-inner">
+          <!-- Stylized QR pattern as SVG (not a real scannable QR, but visually similar) -->
+          <svg class="qr-svg" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <rect width="140" height="140" fill="#ffffff" rx="6"/>
+            <!-- add some blocks to mimic a QR code -->
+            <g fill="#0b2f66">
+              <!-- top-left finder -->
+              <rect x="6" y="6" width="30" height="30"/>
+              <rect x="10" y="10" width="22" height="22" fill="#ffffff"/>
+              <rect x="14" y="14" width="14" height="14"/>
+
+              <!-- top-right finder -->
+              <rect x="104" y="6" width="30" height="30"/>
+              <rect x="108" y="10" width="22" height="22" fill="#ffffff"/>
+              <rect x="112" y="14" width="14" height="14"/>
+
+              <!-- bottom-left finder -->
+              <rect x="6" y="104" width="30" height="30"/>
+              <rect x="10" y="108" width="22" height="22" fill="#ffffff"/>
+              <rect x="14" y="112" width="14" height="14"/>
+
+              <!-- some small data modules -->
+              <rect x="50" y="20" width="8" height="8"/>
+              <rect x="62" y="20" width="8" height="8"/>
+              <rect x="74" y="20" width="8" height="8"/>
+              <rect x="86" y="20" width="8" height="8"/>
+
+              <rect x="40" y="40" width="8" height="8"/>
+              <rect x="58" y="46" width="8" height="8"/>
+              <rect x="76" y="46" width="8" height="8"/>
+              <rect x="94" y="46" width="8" height="8"/>
+
+              <rect x="46" y="78" width="8" height="8"/>
+              <rect x="64" y="78" width="8" height="8"/>
+              <rect x="82" y="78" width="8" height="8"/>
+
+              <rect x="92" y="92" width="8" height="8"/>
+              <rect x="74" y="92" width="8" height="8"/>
+              <rect x="56" y="92" width="8" height="8"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <h1 class="title">Improve your front-end skills by building projects</h1>
+      <p class="desc">Scan the QR code to visit Frontend Mentor and take your coding skills to the next level</p>
+    </div>
+  </div>
+
+</body>
+</html>
